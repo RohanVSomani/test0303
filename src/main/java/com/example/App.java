@@ -3,11 +3,14 @@ package com.example;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 public class App 
 {
     public static void main( String[] args ) throws InterruptedException
     {
-        WebDriver driver = new ChromeDriver();
+        ChromeOptions op = new ChromeOptions();
+        options.addArguments("--no-sandbox"); 
+        WebDriver driver = new ChromeDriver(op);
         driver.get("https://www.saucedemo.com/");
         driver.manage().window().maximize();
         Thread.sleep(1000);
