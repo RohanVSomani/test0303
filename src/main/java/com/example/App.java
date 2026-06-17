@@ -4,22 +4,27 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+/**
+ * Hello world!
+ *
+ */
 public class App 
 {
     public static void main( String[] args ) throws InterruptedException
     {
-        ChromeOptions op = new ChromeOptions();
-        op.addArguments("--no-sandbox"); 
-        WebDriver driver = new ChromeDriver(op);
+        ChromeOptions options = new ChromeOptions();
+options.addArguments("--headless");                 // run without UI
+options.addArguments("--no-sandbox");              // required in Linux/Jenkins
+options.addArguments("--disable-dev-shm-usage");   // avoid memory issues
+
+WebDriver driver = new ChromeDriver(options);
         driver.get("https://www.saucedemo.com/");
         driver.manage().window().maximize();
-        Thread.sleep(1000);
-        driver.findElement(By.id("user-name")).sendKeys("standard-user");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
+        driver.findElement(By.id("user-name")).sendKeys("standard_user");
+        Thread.sleep(2000);
         driver.findElement(By.id("password")).sendKeys("secret_sauce");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         driver.findElement(By.id("login-button")).click();
-        Thread.sleep(1000);
-        System.out.println("Successfully logged");
     }
 }
