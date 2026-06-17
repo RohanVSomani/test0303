@@ -9,7 +9,7 @@ public class App
     public static void main( String[] args ) throws InterruptedException
     {
         ChromeOptions op = new ChromeOptions();
-        options.addArguments("--no-sandbox"); 
+        op.addArguments("--no-sandbox"); 
         WebDriver driver = new ChromeDriver(op);
         driver.get("https://www.saucedemo.com/");
         driver.manage().window().maximize();
